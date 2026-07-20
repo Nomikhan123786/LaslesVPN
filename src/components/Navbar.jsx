@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/images/Logo.png";
+import logo from "../assets/images/Logo.svg";
 import { useState } from "react";
 
 const navLinks = [
@@ -38,13 +38,13 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-4 xl:gap-6">
           <Link
             to="/login"
-            className="text-sm font-medium text-[#4F5665] hover:text-red-500 transition-colors duration-200"
+            className="text-sm-[800] font-medium text-black hover:text-red-500 transition-colors duration-200"
           >
             Sign In
           </Link>
           <Link
             to="/signup"
-            className="border-2 border-[#F53855] text-[#F53855] text-sm font-semibold px-6 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors duration-200"
+            className="border-1 border-[#F53855] text-[#F53855] text-sm-[800] font-bold px-10 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors duration-200"
           >
             Sign Up
           </Link>
