@@ -46,7 +46,7 @@ const plans = [
 
 const Plan = () => {
   return (
-    <section id="pricing" className="py-20 px-6 md:px-12">
+    <section id="network" className="py-20 px-6 md:px-12">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center max-w-lg mx-auto">

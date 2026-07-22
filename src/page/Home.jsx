@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Network from "../components/Network";
 
 import Plan from "../components/Plan";
+import Testimonials from "../components/Testimonials";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Feature />
       <Plan />
       <Network />
+      <Testimonials />
     </div>
   );
 };
