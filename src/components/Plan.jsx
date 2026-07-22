@@ -71,7 +71,7 @@ const Plan = () => {
               }`}
             >
               {/* Icon */}
-              <img src={box} alt="" className="w-35 h-35 mt-20" />
+              <img src={box} alt="" className="w-35 h-35 mt-10" />
 
               {/* Title */}
               <h3 className="pt-6 font-semibold text-gray-900">
