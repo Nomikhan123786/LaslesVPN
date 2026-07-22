@@ -2,7 +2,10 @@ import global from "../assets/images/Huge Global.svg";
 import social from "../assets/images/Sponsored.svg";
 const Network = () => {
   return (
-    <section id="pricing" className="py-20 px-6 md:px-12">
+    <section
+      id="network"
+      className="py-20 px-6 md:px-12 bg-gradient-to-b from-white from-50% to-gray-50 to-50%"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center max-w-lg mx-auto">

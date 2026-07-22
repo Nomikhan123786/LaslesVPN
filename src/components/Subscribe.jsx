@@ -1,6 +1,6 @@
 const Subscribe = () => {
   return (
-    <section id="subscribe" className="px-6 md:px-12 pb-16">
+    <section id="subscribe" className="px-6 md:px-12 pb-16 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/60 border border-gray-100 px-6 sm:px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Text */}

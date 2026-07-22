@@ -2,8 +2,17 @@ import { useState } from "react";
 import avatar1 from "../assets/images/Ellipse 175.svg";
 import avatar2 from "../assets/images/Ellipse 175 (2).svg";
 import avatar3 from "../assets/images/Ellipse 175 (1).svg";
+import avatar4 from "../assets/images/Noman.jpeg";
 
 const testimonials = [
+  {
+    name: "Noman Nawaz",
+    location: "Rawalpindi,Pakistan",
+    rating: "4.5",
+    avatar: avatar4,
+    quote:
+      "Wow... It is very useful VPN and easy to use for everyOne, it turned out to be more than my expectations. LaslesVPN always the best.",
+  },
   {
     name: "Viezh Robert",
     location: "Warsaw, Poland",
@@ -57,8 +66,13 @@ const ArrowIcon = ({ direction = "left" }) => (
   </svg>
 );
 
+const VISIBLE_COUNT = 3;
+
 const Testimonials = () => {
   const [active, setActive] = useState(0);
+
+  const maxIndex = Math.max(testimonials.length - VISIBLE_COUNT, 0);
+  const windowStart = Math.min(active, maxIndex);
 
   const goPrev = () =>
     setActive((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
@@ -66,7 +80,7 @@ const Testimonials = () => {
     setActive((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
 
   return (
-    <section id="testimonials" className="py-16 px-6 md:px-12">
+    <section id="testinomials" className="py-16 px-6 md:px-12 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center max-w-xl mx-auto">
@@ -79,37 +93,47 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Desktop: grid of 3 */}
-        <div className="mt-12 hidden md:grid md:grid-cols-3 gap-6">
-          {testimonials.map((t, index) => (
-            <div
-              key={index}
-              className={`rounded-2xl border p-6 ${
-                index === active
-                  ? "border-2 border-red-500 shadow-lg shadow-red-100"
-                  : "border-gray-200"
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={t.avatar}
-                    alt={t.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-900">{t.name}</p>
-                    <p className="text-sm text-gray-500">{t.location}</p>
+        {/* Desktop: sliding window, always shows exactly 3 cards no matter how many total */}
+        <div className="mt-12 hidden md:block overflow-hidden">
+          <div
+            className="flex transition-transform duration-300 ease-in-out -mx-3"
+            style={{
+              transform: `translateX(-${windowStart * (100 / VISIBLE_COUNT)}%)`,
+            }}
+          >
+            {testimonials.map((t, index) => (
+              <div key={index} className="w-1/3 shrink-0 px-3">
+                <div
+                  className={`h-full rounded-2xl border p-6 ${
+                    index === active
+                      ? "border-2 border-red-500 shadow-lg shadow-red-100 bg-white"
+                      : "border-gray-200"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={t.avatar}
+                        alt={t.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                      <div>
+                        <p className="font-semibold text-gray-900">{t.name}</p>
+                        <p className="text-sm text-gray-500">{t.location}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1 text-gray-900 font-medium">
+                      <span>{t.rating}</span>
+                      <StarIcon />
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-1 text-gray-900 font-medium">
-                  <span>{t.rating}</span>
-                  <StarIcon />
+                  <p className="mt-5 text-gray-600 leading-relaxed">
+                    "{t.quote}"
+                  </p>
                 </div>
               </div>
-              <p className="mt-5 text-gray-600 leading-relaxed">"{t.quote}"</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Mobile: single card  */}

@@ -1,19 +1,20 @@
+import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/Logo.svg";
 import { useState } from "react";
 
 const navLinks = [
-  { href: "/about", label: "About" },
-  { href: "/features", label: "Features" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/testinomials", label: "Testinomials" },
-  { href: "/help", label: "Help" },
+  { href: "", label: "About" },
+  { href: "#features", label: "Features" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#testinomials", label: "Testinomials" },
+  { href: "#subscribe", label: "Help" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
-    <nav className="bg-white">
+    <nav className="sticky top-0 right-0 left-0 bg-white">
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-7 py-4 lg:py-[18px] flex items-center justify-between relative">
         {/* Logo */}
         <div className="flex-shrink-0">
@@ -23,14 +24,14 @@ const Navbar = () => {
         {/* Nav Links */}
         <div className="hidden lg:flex items-center gap-6 xl:gap-8 ">
           {navLinks.map((link) => (
-            <Link
+            <HashLink
               key={link.href}
               to={link.href}
               onClick={() => setOpen(false)}
               className="text-sm font-medium text-[#4F5665] transition-colors duration-200 hover:text-red-500"
             >
               {link.label}
-            </Link>
+            </HashLink>
           ))}
         </div>
 

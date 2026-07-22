@@ -1,7 +1,9 @@
+import { useState } from "react";
 import box from "../assets/images/box.svg";
 
 const plans = [
   {
+    id: 1,
     title: "Free Plan",
     strategy: [
       "Unlimited Bandwidth",
@@ -11,9 +13,9 @@ const plans = [
     ],
     offer: "Free",
     select: "Select",
-    highlighted: false,
   },
   {
+    id: 2,
     title: "Standard Plan",
     strategy: [
       "Unlimited Bandwidth",
@@ -25,9 +27,9 @@ const plans = [
     offer: "$9 ",
     month: "/ mo",
     select: "Select",
-    highlighted: false,
   },
   {
+    id: 3,
     title: "Premium Plan",
     strategy: [
       "Unlimited Bandwidth",
@@ -40,13 +42,14 @@ const plans = [
     offer: "$12 ",
     month: "/ mo",
     select: "Select",
-    highlighted: true,
   },
 ];
 
 const Plan = () => {
+  const [highlighted, setHighlighted] = useState(null);
+
   return (
-    <section id="network" className="py-20 px-6 md:px-12">
+    <section id="pricing" className="py-20 px-6 md:px-12">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center max-w-lg mx-auto">
@@ -65,7 +68,7 @@ const Plan = () => {
             <div
               key={index}
               className={`h-full flex flex-col items-center text-center rounded-2xl border p-8 ${
-                card_item.highlighted
+                highlighted === card_item.id
                   ? "border-2 border-red-500 shadow-xl shadow-red-100"
                   : "border-gray-200 shadow-sm"
               }`}
@@ -119,8 +122,9 @@ const Plan = () => {
 
               {/* Select button */}
               <button
+                onClick={() => setHighlighted(card_item.id)}
                 className={`mt-6 w-full max-w-[180px] py-2.5 rounded-full text-sm font-semibold transition-colors duration-200 ${
-                  card_item.highlighted
+                  highlighted === card_item.id
                     ? "bg-red-500 text-white hover:bg-red-600"
                     : "border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
                 }`}
